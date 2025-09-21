@@ -1,10 +1,13 @@
 # Changelog
 
 ## 2.14.0
+
 - Bump to OTBR POSIX version 9cfb06a (2025-09-20)
 - Bump universal-silabs-flasher to 0.0.32
+- Switch to OpenThread mDNS resolver
 
 ## 2.13.0
+
 - Bump to OTBR POSIX version b067e5ac (2025-01-13 22:32:22 -0500)
 - Bump universal-silabs-flasher to 0.0.28
 - Remove dataset deletion REST API backwards compatibility patch. The minimum Core version for this add-on is now 2023.9.0
@@ -27,10 +30,12 @@
 - Update flasher script to work with Home Assistant Yellow with CM5
 
 ## 2.12.1
+
 - Fix possible race condition between otbr-agent-configure and otbr-agent-rest-discovery
   services causing failed startup ([#3826](https://github.com/home-assistant/addons/issues/3826))
 
 ## 2.12.0
+
 - Bump universal-silabs-flasher to 0.0.23
 - Bump OTBR firmwares to latest versions
 - Bump to OTBR POSIX version b041fa52daa (2024-11-14 08:18:28 -0800)
@@ -38,7 +43,7 @@
 
 ## 2.11.1
 
--  Fix issue with USB TI CC2652 based devices
+- Fix issue with USB TI CC2652 based devices
 
 ## 2.11.0
 

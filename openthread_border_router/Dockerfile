@@ -79,6 +79,7 @@ RUN \
         -DOTBR_NAT64=ON \
         -DOT_POSIX_NAT64_CIDR="192.168.255.0/24" \
         -DOTBR_DNS_UPSTREAM_QUERY=ON \
+        -DOT_BORDER_AGENT_SERVICE_NAME="Home Assistant OpenThread Border Router" \
         -DOT_CHANNEL_MONITOR=ON \
         -DOT_CHANNEL_MONITOR_AUTO_START=OFF \
         -DOT_COAP=OFF \

@@ -17,7 +17,6 @@ ENV REST_API 1
 ENV DHCPV6_PD_REF 0
 ENV DOCKER 1
 
-COPY 0001-channel-monitor-disable-by-default.patch /usr/src
 COPY openthread-core-ha-config-posix.h /usr/src
 # Required and installed (script/bootstrap) can be removed after build
 ENV OTBR_BUILD_DEPS build-essential ninja-build cmake wget ca-certificates \
@@ -55,7 +54,6 @@ RUN \
     && ./script/bootstrap \
     && ( \
         cd third_party/openthread/repo \
-        && patch -p1 < /usr/src/0001-channel-monitor-disable-by-default.patch \
         && cp /usr/src/openthread-core-ha-config-posix.h . \
        ) \
     # Mimic rt_tables_install \
@@ -65,9 +63,7 @@ RUN \
         -DBUILD_TESTING=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DOTBR_FEATURE_FLAGS=ON \
-        -DOTBR_DNSSD_DISCOVERY_PROXY=ON \
-        -DOTBR_SRP_ADVERTISING_PROXY=ON \
-        -DOTBR_MDNS=mDNSResponder \
+        -DOTBR_MDNS=openthread \
         -DOTBR_VERSION= \
         -DOT_PACKAGE_VERSION= \
         -DOTBR_DBUS=OFF \
@@ -84,10 +80,11 @@ RUN \
         -DOT_POSIX_NAT64_CIDR="192.168.255.0/24" \
         -DOTBR_DNS_UPSTREAM_QUERY=ON \
         -DOT_CHANNEL_MONITOR=ON \
+        -DOT_CHANNEL_MONITOR_AUTO_START=OFF \
         -DOT_COAP=OFF \
         -DOT_COAPS=OFF \
         -DOT_DNS_CLIENT_OVER_TCP=OFF \
-        -DOT_THREAD_VERSION=1.3 \
+        -DOT_THREAD_VERSION=1.4 \
         -DOT_PROJECT_CONFIG="../openthread-core-ha-config-posix.h" \
         -DOT_RCP_RESTORATION_MAX_COUNT=2 \
         && cd build/otbr/ \
